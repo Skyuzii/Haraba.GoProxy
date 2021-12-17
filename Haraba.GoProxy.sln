@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haraba.GoProxy", "Haraba.GoProxy\Haraba.GoProxy.csproj", "{754E4D9E-3EE3-4BC4-B982-99DAA9787B09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haraba.GoProxy.Tests", "Haraba.GoProxy.Tests\Haraba.GoProxy.Tests.csproj", "{E078AF2A-5466-437B-BD83-EDABBA2B71E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{754E4D9E-3EE3-4BC4-B982-99DAA9787B09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{754E4D9E-3EE3-4BC4-B982-99DAA9787B09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{754E4D9E-3EE3-4BC4-B982-99DAA9787B09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E078AF2A-5466-437B-BD83-EDABBA2B71E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E078AF2A-5466-437B-BD83-EDABBA2B71E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E078AF2A-5466-437B-BD83-EDABBA2B71E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E078AF2A-5466-437B-BD83-EDABBA2B71E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
