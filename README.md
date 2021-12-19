@@ -1,5 +1,5 @@
 # Haraba.GoProxy
-Обертка для удобной работы с <a href="https://github.com/Skyuzii/SpoofingTlsFingerprint">прокси сервером Golang</a> для обхода TLS Fingerprint
+Обертка для удобной работы с <a href="https://github.com/Skyuzii/SpoofingTlsFingerprint">прокси сервером Golang для обхода TLS Fingerprint</a>
 
 ## Пример Haraba.GoProxy
 Вы можете запустить этот тест в <a href="https://github.com/Skyuzii/Haraba.GoProxy/blob/main/Haraba.GoProxy.Tests/MainTests.cs">Haraba.GoProxy.Tests/MainTests.cs</a>
