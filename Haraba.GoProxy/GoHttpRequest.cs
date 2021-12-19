@@ -90,11 +90,10 @@ namespace Haraba.GoProxy
         /// </summary>
         /// <param name="url">Ссылка на ресурс</param>
         /// <param name="method">Метод запроса (GET|POST|PUT|HEAD)</param>
-        /// <param name="encoding">Кодировка для ответа</param>
         /// <param name="throwIfNotSuccessCode">Выкинуть ошибку, если ответ отрицательный</param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public async Task<GoHttpResponse> GetResponseAsync(string url, string method = "GET", Encoding encoding = null, bool throwIfNotSuccessCode = true)
+        public async Task<GoHttpResponse> GetResponseAsync(string url, string method = "GET", bool throwIfNotSuccessCode = true)
         {
             try
             {
@@ -112,7 +111,7 @@ namespace Haraba.GoProxy
 
                 using var response = request.GetResponse();
                 await using var responseStream = response.GetResponseStream();
-                using var responseStreamReader = new StreamReader(requestStream, encoding ?? Encoding.UTF8);
+                using var responseStreamReader = new StreamReader(requestStream);
                 
                 var goHttpResponse = JsonConvert.DeserializeObject<GoHttpResponse>(await responseStreamReader.ReadToEndAsync());
                 if (throwIfNotSuccessCode)
@@ -133,11 +132,10 @@ namespace Haraba.GoProxy
         /// </summary>
         /// <param name="url">Ссылка на ресурс</param>
         /// <param name="method">Метод запроса (GET|POST|PUT|HEAD)</param>
-        /// <param name="encoding">Кодировка для ответа</param>
         /// <param name="throwIfNotSuccessCode">Выкинуть ошибку, если ответ отрицательный</param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public GoHttpResponse GetResponse(string url, string method = "GET", Encoding encoding = null, bool throwIfNotSuccessCode = true)
+        public GoHttpResponse GetResponse(string url, string method = "GET", bool throwIfNotSuccessCode = true)
         {
             try
             {
@@ -154,7 +152,7 @@ namespace Haraba.GoProxy
 
                 using var response = request.GetResponse();
                 using var responseStream = response.GetResponseStream();
-                using var responseStreamReader = new StreamReader(requestStream, encoding ?? Encoding.UTF8);
+                using var responseStreamReader = new StreamReader(requestStream);
                 
                 var goHttpResponse = JsonConvert.DeserializeObject<GoHttpResponse>(responseStreamReader.ReadToEnd());
                 if (throwIfNotSuccessCode)
