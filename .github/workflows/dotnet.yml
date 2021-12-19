@@ -24,4 +24,4 @@ jobs:
     - name: Pack
       run: dotnet pack "Haraba.GoProxy" -c Release -o "Haraba.GoProxy\bin\Release\"
     - name: Publish
-      run: dotnet nuget push "Haraba.GoProxy\bin\Release\Haraba.GoProxy.*.nupkg"
+      run: dotnet nuget push "Haraba.GoProxy\bin\Release\Haraba.GoProxy.*.nupkg" -k ${{secrets.NugetApiKey}}
