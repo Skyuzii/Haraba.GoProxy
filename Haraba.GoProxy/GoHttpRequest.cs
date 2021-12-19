@@ -35,8 +35,8 @@ namespace Haraba.GoProxy
         
         /// <summary>
         /// Прокси
-        /// IP:PORT
-        /// LOGIN:PASS@IP:PORT
+        /// http://IP:PORT
+        /// http://LOGIN:PASS@IP:PORT
         /// </summary>
         public string Proxy { get; set; }
         
