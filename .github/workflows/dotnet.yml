@@ -22,6 +22,6 @@ jobs:
     - name: Remove old versions
       run: rm -r -f "Haraba.GoProxy\bin\Release\Haraba.GoProxy.*.nupkg"
     - name: Pack
-      run: dotnet pack "Haraba.GoProxy" -c Release -o "Haraba.GoProxy\bin\Release\"
+      run: dotnet pack Haraba.GoProxy -c Release -o Haraba.GoProxy\bin\Release
     - name: Publish
-      run: dotnet nuget push "Haraba.GoProxy\bin\Release\Haraba.GoProxy.*.nupkg" -k ${{secrets.NugetApiKey}}
+      run: dotnet nuget push Haraba.GoProxy\bin\Release\Haraba.GoProxy.*.nupkg -k ${{secrets.NugetApiKey}}
