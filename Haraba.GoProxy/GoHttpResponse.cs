@@ -29,7 +29,7 @@ namespace Haraba.GoProxy
         {
             if (!Success) throw new GoHttpException($"Success = false -> {Error}");
             if (Payload == null) throw new GoHttpException("Пустой ответ");
-            if (Payload.Status < 200 || Payload.Status > 299) throw new GoHttpException($"({Payload.Status}) {Payload.Content}");
+            if (Payload.Status < 200 || Payload.Status > 299) throw new GoHttpException($"({Payload.Status}) {Payload.Text}");
         }
     }
 
@@ -48,7 +48,7 @@ namespace Haraba.GoProxy
         /// <summary>
         /// Контент
         /// </summary>
-        public string Content { get; set; }
+        public string Text { get; set; }
         
         /// <summary>
         /// Список куков с заголовков Set-Cookie

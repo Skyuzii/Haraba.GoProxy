@@ -122,7 +122,7 @@ namespace Haraba.GoProxy
 
                 using var response = request.GetResponse();
                 await using var responseStream = response.GetResponseStream();
-                using var responseStreamReader = new StreamReader(requestStream);
+                using var responseStreamReader = new StreamReader(responseStream);
                 
                 var goHttpResponse = JsonConvert.DeserializeObject<GoHttpResponse>(await responseStreamReader.ReadToEndAsync());
                 if (throwIfNotSuccessCode)
@@ -163,7 +163,7 @@ namespace Haraba.GoProxy
 
                 using var response = request.GetResponse();
                 using var responseStream = response.GetResponseStream();
-                using var responseStreamReader = new StreamReader(requestStream);
+                using var responseStreamReader = new StreamReader(responseStream);
                 
                 var goHttpResponse = JsonConvert.DeserializeObject<GoHttpResponse>(responseStreamReader.ReadToEnd());
                 if (throwIfNotSuccessCode)
