@@ -15,6 +15,7 @@ namespace Haraba.GoProxy
         /// <summary>
         /// Ссылка на обработчик запроса
         /// </summary>
+        [JsonIgnore]
         public string GoProxyUrl { get; set; }
         
         /// <summary>
@@ -65,6 +66,16 @@ namespace Haraba.GoProxy
         /// </summary>
         public Dictionary<string, string> Headers { get; set; }
 
+        /// <summary>
+        /// Пропустить верификацию клиентского сертификата?
+        /// </summary>
+        public bool InsecureSkipVerify { get; set; }
+
+        /// <summary>
+        /// Выключить редирект?
+        /// </summary>
+        public bool DisableRedirect { get; set; }
+
         private GoHttpRequest()
         {
         }
@@ -97,7 +108,7 @@ namespace Haraba.GoProxy
         {
             try
             {
-                var request = (HttpWebRequest) WebRequest.Create(url);
+                var request = (HttpWebRequest) WebRequest.Create(GoProxyUrl);
                 request.Method = "POST";
                 Url = url;
                 Method = method;
@@ -185,19 +196,31 @@ namespace Haraba.GoProxy
             }
         }
 
+        public GoHttpRequest WithInsecureSkipVerify(bool insecureSkipVerify)
+        {
+            InsecureSkipVerify = insecureSkipVerify;
+            return this;
+        }
+
         public GoHttpRequest WithHeader(string name, string value)
         {
             Headers.AddOrUpdate(name, value);
             return this;
         }
-        
+
+        public GoHttpRequest WithReferer(string value)
+        {
+            Headers.AddOrUpdate("Referer", value);
+            return this;
+        }
+
         public GoHttpRequest WithHeaders(Dictionary<string, string> headers)
         {
-            foreach (var item in headers)
+            foreach (var (key, value) in headers)
             {
-                Headers.AddOrUpdate(item.Key, item.Value);
+                Headers.AddOrUpdate(key, value);
             }
-            
+
             return this;
         }
 
@@ -206,7 +229,7 @@ namespace Haraba.GoProxy
             TimeOut = timeout;
             return this;
         }
-        
+
         public GoHttpRequest WithCookie(Cookie cookie)
         {
             Cookies.Add(cookie.ToGoCookie());
@@ -222,6 +245,18 @@ namespace Haraba.GoProxy
         public GoHttpRequest WithUserAgent(string userAgent)
         {
             UserAgent = userAgent;
+            return this;
+        }
+
+        public GoHttpRequest WithAccept(string accept)
+        {
+            Headers.AddOrUpdate("Accept", accept);
+            return this;
+        }
+
+        public GoHttpRequest WithContentType(string contentType)
+        {
+            Headers.AddOrUpdate("Content-Type", contentType);
             return this;
         }
 
