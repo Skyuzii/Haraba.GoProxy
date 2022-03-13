@@ -1,0 +1,27 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Remove old versions
+      run: rm -r -f "Haraba.GoProxy\bin\Release\Haraba.GoProxy.*.nupkg"
+    - name: Pack
+      run: dotnet pack Haraba.GoProxy -c Release -o Haraba.GoProxy\bin\Release
+    - name: Publish
+      run: dotnet nuget push Haraba.GoProxy\bin\Release\Haraba.GoProxy.*.nupkg -s https://www.nuget.org/packages/Haraba.GoProxy/ -k ${{secrets.NugetApiKey}}
